@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Serpientes y Escaleras: Reto de Estudio</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+<h1>🎲 Serpientes y Escaleras</h1><p style="text-align:center;margin:4px 0 12px;color:var(--mut)">Windows, Word, Excel y PowerPoint · 50 preguntas</p>
+
+<div id="setup" class="card">
+ <p><b>1. Agrega jugadores</b> (hasta 10)</p>
+ <small>Elige tu avatar y escribe tu nombre:</small>
+ <div class="avs" id="avs"></div>
+ <div class="row"><input id="pn" placeholder="Nombre del jugador" maxlength="14"><button id="add">Agregar</button></div>
+ <div class="chips" id="plist"></div>
+ <details><summary>Cargar mis preguntas (opcional)</summary>
+  <small>Pega un arreglo JSON: [{"q":"Pregunta","o":["A","B","C","D"],"a":0,"e":"Justificación"}]. “a” es el índice de la respuesta correcta (0 = inciso A).</small>
+  <textarea id="imp" rows="4"></textarea>
+ </details>
+ <p><small>Reglas: tira el dado, responde la pregunta y, si aciertas, avanzas. Las escaleras suben, las serpientes bajan. Quien llega a la casilla 100 se queda con su lugar en el podio (1º, 2º, 3º…) y sale del tablero, pero el juego continúa con los demás. La partida termina cuando se acaban las preguntas o ya no queda nadie jugando. Si el jugador tarda más de 20 segundos en decidir, otro jugador puede robarle el avance y responder en su lugar. Quien cae en 4 serpientes queda eliminado.</small></p>
+ <div class="row"><button id="start" disabled>¡Comenzar!</button><button id="loadS" class="alt" type="button">📂 Cargar avance</button></div>
+ <input type="file" id="lf" class="hide" accept=".json,application/json">
+</div>
+
+<div id="game" class="hide">
+ <div class="chips" id="score"></div>
+ <div id="board"><svg id="fx" viewBox="0 0 100 100"></svg></div>
+ <div class="card" id="ctrl">
+  <div id="turn"></div>
+  <div id="dice">🎲</div>
+  <div id="msg"></div>
+  <button id="roll">Tirar dado</button>
+ </div>
+ <div class="row" style="justify-content:center;margin-bottom:14px"><button id="saveB" class="alt" type="button">💾 Guardar avance</button><button id="loadB" class="alt" type="button">📂 Cargar avance</button></div>
+</div>
+</div>
+
+<div id="modal"><div id="qbox">
+ <small id="qmeta"></small>
+ <h3 id="qt"></h3><div id="qo"></div>
+ <div id="steal" class="hide"><div id="tmr"></div><button id="stealBtn" class="alt" type="button" disabled>🥷 Robar avance</button><div id="stealList" class="hide"></div></div>
+ <div id="fb"></div>
+ <button id="next" class="hide" style="margin-top:12px">Continuar</button>
+</div></div>
+
+<script src="js/preguntas.js"></script>
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/jugadores.js"></script>
+<script src="js/tablero.js"></script>
+<script src="js/juego.js"></script>
+<script src="js/guardado.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
